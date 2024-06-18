@@ -1,0 +1,55 @@
+ 
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2),
+               6px 6px 10px rgba(0, 0, 0, 0.1);
+  }
+  .ar{
+    
+    color: var(--dark);
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .card-title {
+ 
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    margin-bottom: 0.5rem;
+   
+  }
+  
+ 
+  .b {
+   
+    /* background-color: var(--green); */
+    background-color:rgb(34, 40, 49);
+    color: aliceblue;
+    width: 30vh;
+  }
+  .b:hover{
+    background-color:rgb(34, 40, 49,0.5);
+    color: aliceblue;
+  }
+  
+
+
+  .room-title{
+
+    display: flex;
+    justify-content: center;
+  }
+  .b:hover{
+    background-color: var(--admin-text);
+    font-weight: 400;
+  }

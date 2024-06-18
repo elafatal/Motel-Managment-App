@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap');
+
+:root {
+    --black: rgb(34, 40, 49);
+    --white:#fff;
+    --blueGradiant: #3234A8;
+    --blue: #0a8670;
+    --secondary: #007DD7;
+    --bluelight: #0098CF;
+    --green:  #00B1BA;
+    --green-20:#C6FCEC;
+    --bhover: rgb(10, 134, 112,0.2);
+    --admin-text:#0a8670;
+    --table-text:rgb(34, 40, 49,0.1);
+   
+  }
+
+  body {
+    background-color: #c9d6ff;
+    background: linear-gradient(to right, #e2e2e2, #C6FCEC);
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

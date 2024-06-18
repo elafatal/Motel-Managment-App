@@ -1,0 +1,50 @@
+
+  
+  .card:hover {
+    transform: scale(1);
+    box-shadow: 10px 10px 28px -2px rgba(0, 0, 0, 0.75);
+
+  }
+.one-room{
+    margin-top: 100px;
+}
+  .card{
+    text-align: center;
+
+  }
+
+  .card__body {
+    text-align: center;
+    margin-top: 50px;
+  }
+  .m  {
+ color:#0a8670;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .card__body h1 {
+    padding: 0px 0px 20px 0px;
+  }
+  .card__body p {
+    color: aliceblue;
+    padding: 0px 10px 30px 10px;
+  }
+  
+  .card-footer {
+ background-color: var(--black);
+    /* background-color:  rgb(10, 134, 112,0.2); */
+    color:aliceblue
+  }
+
+  .card__Footer__first div p,
+  .card__Footer__second div p,
+  .card__Footer__third div p {
+    font-size: 20px;
+    font-weight: 1000;
+  }
+  .card__Footer__first label,
+  .card__Footer__second label,
+  .card__Footer__third label {
+    font-weight: 200;
+  }
+  

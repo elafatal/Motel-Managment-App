@@ -1,0 +1,18 @@
+    
+
+
+
+
+.round-5{
+  border-radius: 15px;
+} 
+  .table thead th {
+    background-color: var(--blue); 
+  }
+  
+
+.head-txt{
+  color: var(--table-text);
+ }
+ 
+

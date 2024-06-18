@@ -1,0 +1,52 @@
+
+.ta{
+    width: 70vh;
+}
+
+  .b{
+    font-weight: 500;
+  }
+
+  input.in{
+    background-color:  rgba(0, 126, 133,0.05);
+  }
+  .in::placeholder{
+    color: var(--black)
+  }
+
+.round-5{
+  border-radius: 15px;
+}
+.card {
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(10%);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* YourStylesheetName.css */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.alert.alert-dark {
+  animation-name: fadeIn;
+  animation-duration: 1s; /* Adjust the duration as needed */
+  animation-fill-mode: forwards; /* Ensures the element remains visible after the animation completes */
+}
+
+
