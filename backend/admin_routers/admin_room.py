@@ -24,6 +24,10 @@ def get_room_by_admin(id: int, db: Session = Depends(get_db), admin: UserAuth = 
     return db_room.get_room_by_admin(id, db, admin.id)
 
 
-@router.get('/get_user/{name}', response_model=RoomDisplay)
-def get_user_by_admin(name: str, db: Session = Depends(get_db), admin: UserAuth = Depends(auth.get_current_admin)):
-    return db_room.get_user_by_admin(name, db, admin.id)
+# @router.get('/get_user/{name}', response_model=RoomDisplay)
+# def get_user_by_admin(name: str, db: Session = Depends(get_db), admin: UserAuth = Depends(auth.get_current_admin)):
+#     return db_room.get_user_by_admin(name, db, admin.id)
+
+@router.delete('/delete_room/{id}')
+def delete_room(id: int, db: Session = Depends(get_db), admin: UserAuth = Depends(auth.get_current_admin)):
+    return db_room.delete_room(id, db, admin.id)

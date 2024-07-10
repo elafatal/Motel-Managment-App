@@ -18,6 +18,7 @@ const AdminDashboard = () => {
   const [id, setId] = useState(0);
   const [bed, setBed] = useState(0);
   const [ncode,setNcode]=useState(0)
+  const [ncodeRoom,setNcodeRoom]=useState(0)
   let token;
   if (location.state) {
     token = location.state.token;
@@ -47,6 +48,10 @@ const AdminDashboard = () => {
         if (ask===4) {
           setPlaceholder('Search by Bed Number')
           setBed(inputValue)
+        }
+        if (ask ==5) {
+          setNcodeRoom(inputValue)
+          setPlaceholder('Search by National Code')
         }
     
       } else {
@@ -81,7 +86,7 @@ const AdminDashboard = () => {
   };
   
   
-
+////////////////////////////////////////////////////////////////////////////////////
   
   
   const handleClickDashboard =()=> setAsk(0);
@@ -105,7 +110,7 @@ const AdminDashboard = () => {
           <div className="d-flex  justify-content-center align-items-center">
             <SearchBox></SearchBox>
           </div>
-          <AdminAllRoomsPage result={id}  />
+          <AdminAllRoomsPage result={id} token={token} />
         </>);
       case 3:
         return (<>
@@ -124,7 +129,7 @@ const AdminDashboard = () => {
           <div className="d-flex  justify-content-center align-items-center">
             <SearchBox></SearchBox>
           </div>
-          <ReservedRoom></ReservedRoom>
+          <ReservedRoom result={ncodeRoom} token={token}></ReservedRoom>
         </>);
       default:
         return <h1 className="fw-bold" style={{marginTop:'20vh'}}>hi... 👋 <br/>Welcome to Admin Panel</h1>;

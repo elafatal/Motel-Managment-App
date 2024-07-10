@@ -48,7 +48,7 @@ def get_room_by_admin(id: int, db: Session, admin_id: int):
     if not admin:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
 
-    reservation = db.query(Reservation).filter(Reservation.room_id== id).first()
+    reservation = db.query(Room).filter(Room.id== id).first()
     if not reservation:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='room not found.')
 
@@ -58,16 +58,16 @@ def get_room_by_admin(id: int, db: Session, admin_id: int):
       
    
 
-def get_user_by_admin(meli_code:int, db: Session, admin_id: int):
-    admin = db.query(Admin).filter(Admin.id == admin_id).first()
-    if not admin:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+# def get_user_by_admin(meli_code:int, db: Session, admin_id: int):
+#     admin = db.query(Admin).filter(Admin.id == admin_id).first()
+#     if not admin:
+#         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
 
-    reservation = db.query(Reservation).filter(Reservation.meli_code == meli_code).first()
-    if not reservation:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='user not found.')
+#     reservation = db.query(Reservation).filter(Reservation.meli_code == meli_code).first()
+#     if not reservation:
+#         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='user not found.')
 
-    return reservation
+#     return reservation
 
 
 #user------------------------------------------------------------------------------------------
@@ -95,3 +95,11 @@ def get_rooms_by_bednumber(bed_number : int, db:Session):
 
 def get_all_rooms(db: Session):
     return db.query(Room).all()
+
+
+def get_rooms_by_meli_code(meli_code: str, db: Session):
+    reservations = db.query(Reservation).filter(Reservation.meli_code == meli_code).all()
+    if not reservations:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='No reservations found for this meli_code')
+
+    return reservations

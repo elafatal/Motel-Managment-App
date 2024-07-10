@@ -87,6 +87,14 @@ class Reservation(ReservationBase):
     class Config:
         orm_mode = True
 
+class ReservationDisplay(BaseModel):
+    room_id: int
+    check_in: datetime
+    check_out: datetime
+    first_name: str
+    last_name: str
+    email: str
+    meli_code: str
 
 
 class AdminBase(BaseModel):

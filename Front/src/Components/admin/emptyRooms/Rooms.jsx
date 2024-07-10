@@ -25,7 +25,6 @@ const Room= ({result}) => {
     } catch (error) {
       console.log(error);
       setError(error.message);
-      setLoading(false); 
     }
   };
   useEffect(() => {
@@ -41,7 +40,7 @@ const Room= ({result}) => {
         });
         if (response.status === 200) {
           setShowButton(true);
-        } 
+        }        
         setRooms(response.data)
       } catch (error) {
         setError(error.message);
@@ -51,7 +50,7 @@ const Room= ({result}) => {
     if (result !== 0) {
       fetchRoomById(result);
     }
-  }, [result]); // React to changes in result prop
+  }, [result]);
 
   const handleClick =() =>{
     fetchRooms()
@@ -59,7 +58,9 @@ const Room= ({result}) => {
   }
 
   return (
+    
     <div className="container col-md-10 my-4">
+      
       {showButton === true ?  <button className="btn btn-outline-success" onClick={handleClick}>
                 View All
               </button> :null}
@@ -68,6 +69,8 @@ const Room= ({result}) => {
       {rooms.map((room, index) => (
         <RoomCard key={index} room={room} />
       ))}
+
+      
     </div>
   );
 };

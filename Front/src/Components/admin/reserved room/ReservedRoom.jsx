@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import OneRoom from "./OneRoom";
 
-const ReservedRoom = () => {
+const ReservedRoom = ({result , token}) => {
   const [rooms, setRooms] = useState([]);
   const [room, setRoom] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isActive, setIsActive] = useState(false);
   const [showButton,setShowButton]=useState(false)
+  const [showButtontable,setShowButtontable]=useState(false)
   useEffect(() => {
     const fetchRooms = async () => {
       try {
@@ -24,6 +25,30 @@ const ReservedRoom = () => {
 
     fetchRooms();
   }, []);
+
+    
+    
+  useEffect(() => {
+    const fetchRoomById = async (number) => {
+      try {
+        const response = await axios.get(`http://127.0.0.1:8000/room/get_rooms_by_meli_code/${number}`, {
+          headers: {  'Authorization': `Bearer ${token}`,
+         'Content-Type': 'application/json'}
+        });
+        setShowButtontable(true)
+        setRooms(response.data);
+        console.log(response);
+      
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if (result !== 0 ) { // Ensure result is neither zero nor falsy
+      fetchRoomById(result);
+    }
+  }, [result, token]); // React to changes in result prop
+  
 
   const handleRowClick = (roomId) => {
     setShowButton(true)
@@ -53,6 +78,21 @@ const ReservedRoom = () => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
   
+
+  const handleView =async()=>{
+    setShowButtontable(false)
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/reservations');
+      console.log(response.data);
+      setRooms(response.data);
+      setLoading(false);
+    } catch (error) {
+      setError(error.message);
+      setLoading(false);
+    }
+  }
+
+
   const handleClick =() =>{
   setIsActive(false)
   setShowButton(false)
@@ -67,7 +107,8 @@ const ReservedRoom = () => {
         <div className="card-header bg-light text-dark">
           <div className="d-flex justify-content-between align-items-center">
             <h5 className="mb-0">Rooms</h5>
-            <button className="btn btn-outline-success">View All</button>
+            {showButtontable=== true ? <button className="btn btn-outline-success" onClick={handleView}>View All</button> : null}
+           
           </div>
         </div>
         <div className="card-body">
